@@ -1,0 +1,47 @@
+.skeleton {
+    &__title {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 21px;
+        color: #000000;
+        text-align: center;
+        margin: 0 0 15px 0;
+    }
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        &-title {
+            width: 326px;
+            height: 16px;
+            background: #C4C4C4;
+        }
+    }
+    &__img {
+        width: 40px;
+        height: 40px;
+        background-color: #C4C4C4;;
+        border-radius: 50%;
+    }
+    &__wrapper {
+        animation-name: opacity;
+        animation-duration: 1s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+    }
+    &__item {
+        margin-top: 15px;
+        height: 35px;
+        background: #C4C4C4;
+    }
+
+    @keyframes opacity {
+        0% {
+            opacity: 0.1;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.spinner {
+    svg {
+        margin: auto;
+        background: rgb(255, 255, 255); 
+        display: block; 
+        shape-rendering: auto; 
+        animation-play-state: running; 
+        animation-delay: 0s;
+        width: 200px;
+        height: 200px;
+    }
+    circle {
+        animation-play-state: running; 
+        animation-delay: 0s;
+    }
+}

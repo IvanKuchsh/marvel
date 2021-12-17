@@ -1,0 +1,19 @@
+.app {
+    width: 1100px;
+    margin: 0 auto;
+    padding: 50px 0;
+	position: relative;
+	&__body {
+		display: grid;
+		grid-template-columns: 650px auto;
+		column-gap: 25px;
+		margin-top: 53px;
+		width: 100%;
+	}
+	&__image {
+		position: absolute;
+		bottom: 0;
+		right: -165px;
+		z-index: -1;
+	}
+}

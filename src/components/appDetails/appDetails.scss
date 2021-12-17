@@ -1,0 +1,35 @@
+.details {
+    z-index: 10;
+    width: 425px;
+    padding: 25px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+    height: 722px;
+    &__header {
+        display: flex;
+        &-wrapper {
+            padding-left: 25px;
+        }
+    }
+    &__images {
+        width: 150px;
+        height: 150px;
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 26px;
+        margin: 0 0 38px 0;
+        color: #000000;
+        text-transform: uppercase;
+    }
+    a {
+        margin-top: 10px;
+    }
+    &__text {
+        font-size: 14px;
+        line-height: 18px;
+        color: #000000;
+        margin: 15px 0 0 0;
+    }
+}
