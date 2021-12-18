@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { CSSTransition } from 'react-transition-group'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import Spinner from '../spinner/spinner';
 import ErrorMessage from '../errorMeassge/errorMessage'
 import AppCharacterListItem from '../appCharListItem/appCharListItem';
 import useMarvelService from '../../services/MarvelService'; 
-import { withRouter } from "react-router";
 import PropTypes from 'prop-types';
 
 import './appCharacterList.scss';
@@ -19,7 +18,6 @@ const AppCharacterList = (props) => {
     const {loading, error, getAllCharacters} = useMarvelService();
     
     const refList = [];
-    const {match} = props;
 
     useEffect(() => {
         updateCharList(offset, true)
@@ -51,7 +49,6 @@ const AppCharacterList = (props) => {
         const elements = charList.map((item, index) => {
             return <CSSTransition 
                 key={item.id}
-                in={match != null ? true : console.log(match)}
                 timeout={300}
                 classNames="character__item"
                 unmountOnExit
@@ -66,7 +63,9 @@ const AppCharacterList = (props) => {
 
         return (
             <ul className="character__wrapper">
-                {elements}
+                <TransitionGroup component={null}>
+                    {elements}
+                </TransitionGroup>
             </ul>
         )
     }

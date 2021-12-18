@@ -6,6 +6,7 @@ import Spinner from '../spinner/spinner';
 import ErrorMessage from '../errorMeassge/errorMessage';
 import Skeleton from '../skeleton/skeleton';
 import AppComics from '../appComics/appComics';
+import CustomForm from '../customForm/CustomForm';
 
 import './appDetails.scss';
 
@@ -51,6 +52,7 @@ const AppDetails = (props) => {
             {spinner}
             {errorMess}
             {view}
+            <CustomForm/>
         </div>
     )
 }

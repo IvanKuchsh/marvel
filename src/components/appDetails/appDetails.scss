@@ -1,4 +1,5 @@
 .details {
+    position: relative;
     z-index: 10;
     width: 425px;
     padding: 25px;
@@ -23,8 +24,10 @@
         color: #000000;
         text-transform: uppercase;
     }
-    a {
-        margin-top: 10px;
+    &__random {
+        &-button {
+            margin-bottom: 10px;
+        }
     }
     &__text {
         font-size: 14px;

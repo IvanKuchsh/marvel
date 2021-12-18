@@ -10,31 +10,39 @@ import { useParams, Link } from 'react-router-dom';
 
 const SingleComicPage = () => {
 
-    const {comicId} = useParams();
-    console.log(comicId);
-    const [comic, setComic] = useState(null);
+    const {comicId, charId} = useParams();
+    const [item, setItem] = useState(null);
 
-    const {loading, error, getComic, clearError} = useMarvelService();
+
+    const {loading, error, getComic, getCharacter, clearError} = useMarvelService();
 
     useEffect(() => {
-        updateComic();
-    }, [comicId]);
+        updateItem();
+    }, [comicId, charId]);
 
 
-    const onComicLoaded = (comic) => {
-        setComic(comic);
+    const onItemLoaded = (item) => {
+        setItem(item);
     }
 
-    const updateComic = () => {
+    const updateItem = () => {
         clearError();
 
-        getComic(comicId)
-            .then(onComicLoaded) 
+        if (comicId) {
+            getComic(comicId)
+                .then(onItemLoaded) 
+        }
+
+        if (charId) {
+            getCharacter(charId)
+                .then(onItemLoaded) 
+        }
+
     }
 
     const spinner = loading ? <Spinner/> : null;
     const errorMess = error ? <ErrorMessage/> : null;
-    const view = !(error || loading || !comic) ? <View comic={comic}/> : null;
+    const view = !(error || loading || !item) ? <View item={item} comicPage={comicId}/> : null;
 
     return (
         <>
@@ -45,7 +53,7 @@ const SingleComicPage = () => {
     )
 }
 
-const View = ({comic: {name, description, prices, pages, language, thumbnail}}) => {
+const View = ({item: {name, description, prices, pages, language, thumbnail}, comicPage}) => {
     return (
         <div className="singlecomic">
             <div className="singlecomic__image">
@@ -59,7 +67,7 @@ const View = ({comic: {name, description, prices, pages, language, thumbnail}}) 
                 <div className="singlecomic__descr">
                     {description}
                 </div>
-                <div className="singlecomic__pages">
+                {comicPage ? <><div className="singlecomic__pages">
                     {pages} pages
                 </div>
                 <div className="singlecomic__lang">
@@ -67,7 +75,7 @@ const View = ({comic: {name, description, prices, pages, language, thumbnail}}) 
                 </div>
                 <div className="singlecomic__price">
                     {prices}$
-                </div>
+                </div></> : null}
             </div>
         </div>
     )
